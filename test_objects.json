@@ -1,0 +1,14 @@
+{
+  "title": "Breaking news",
+  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "publishedAt": "2023-05-12",
+  "sourceId": 2,
+  "topics": ["business", "policy", "tech"]
+},
+{
+  "firstname": "Bakbergen",
+  "surname": "Atymtay",
+  "email": "atymtaev@mail.ru",
+  "password": "123",
+  "roles": ["admin", "mod", "user"]
+}
