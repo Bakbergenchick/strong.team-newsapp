@@ -6,6 +6,7 @@ import com.strongteam.newsapp.entity.Source;
 import com.strongteam.newsapp.entity.Topic;
 import com.strongteam.newsapp.entity.enums.ERole;
 import com.strongteam.newsapp.entity.enums.ETopic;
+import com.strongteam.newsapp.exception.domain.TopicNotFoundException;
 import com.strongteam.newsapp.payload.NewsDTO;
 import com.strongteam.newsapp.repository.NewsRepository;
 import com.strongteam.newsapp.repository.SourceRepository;
@@ -81,27 +82,47 @@ public class NewsServiceImpl implements NewsService {
         topics.forEach(t -> {
             switch (t) {
                 case "business" -> {
-                    Topic bisTopic = topicRepository
-                            .findByTopicType(ETopic.Business)
-                            .orElseThrow(() -> new RuntimeException("Error, Topic is not found"));
+                    Topic bisTopic = null;
+                    try {
+                        bisTopic = topicRepository
+                                .findByTopicType(ETopic.Business)
+                                .orElseThrow(() -> new TopicNotFoundException("Error, Topic is not found"));
+                    } catch (TopicNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                     topicSet.add(bisTopic);
                 }
                 case "policy" -> {
-                    Topic polTopic = topicRepository
-                            .findByTopicType(ETopic.Politics)
-                            .orElseThrow(() -> new RuntimeException("Error, Topic is not found"));
+                    Topic polTopic = null;
+                    try {
+                        polTopic = topicRepository
+                                .findByTopicType(ETopic.Politics)
+                                .orElseThrow(() -> new TopicNotFoundException("Error, Topic is not found"));
+                    } catch (TopicNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                     topicSet.add(polTopic);
                 }
                 case "sport" -> {
-                    Topic polTopic = topicRepository
-                            .findByTopicType(ETopic.Sport)
-                            .orElseThrow(() -> new RuntimeException("Error, Topic is not found"));
+                    Topic polTopic = null;
+                    try {
+                        polTopic = topicRepository
+                                .findByTopicType(ETopic.Sport)
+                                .orElseThrow(() -> new TopicNotFoundException("Error, Topic is not found"));
+                    } catch (TopicNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                     topicSet.add(polTopic);
                 }
                 case "tech" -> {
-                    Topic polTopic = topicRepository
-                            .findByTopicType(ETopic.Technology)
-                            .orElseThrow(() -> new RuntimeException("Error, Topic is not found"));
+                    Topic polTopic = null;
+                    try {
+                        polTopic = topicRepository
+                                .findByTopicType(ETopic.Technology)
+                                .orElseThrow(() -> new TopicNotFoundException("Error, Topic is not found"));
+                    } catch (TopicNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                     topicSet.add(polTopic);
                 }
             }

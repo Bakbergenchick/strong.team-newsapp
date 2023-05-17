@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "22f33673-ac2b-4f30-80d5-ff68a2bd5a86",
+		"name": "news",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "add news",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"COVID-19 vaccine distribution begins\",\r\n    \"content\": \"The first shipments of the COVID-19 vaccine have been sent out across the country.\",\r\n    \"author\": \"Alton\",\r\n    \"publishedAt\": \"2021-05-14\",\r\n    \"source_id\": {\r\n        \"id\": 1,\r\n        \"name\": \"CNN\",\r\n        \"url\": \"https://www.cnn.com/\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost8080}}/news",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get news by source id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhdHltdGFldmJha0Biay5ydSIsImlzcyI6IlNUUk9ORy5URUFNIiwiQXV0aG9yaXRpZXMiOlsiUk9MRV9NT0RFUkFUT1IiLCJST0xFX0FETUlOIl0sImV4cCI6MTY4NDU0MDcxNiwiaWF0IjoxNjg0MjIwNzE2fQ.4uW_kU2LT1kMihc0K-FQyxYea9Vh00QPLMFh63Zj2P2-c79tYpQw4_EerATslWrPw1gTAYNPm5JLq56fSerQaA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost8080}}/news/bySource/1",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"news",
+								"bySource",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get news by topic id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost8080}}/news/byTopic/1",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"news",
+								"byTopic",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete news by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost8080}}/news/1",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"news",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update news",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"title\": \"Breaking news3434\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\r\n    \"author\": \"John Doe\",\r\n    \"publishedAt\": \"2023-05-12\",\r\n    \"source\": {\r\n        \"id\": 1,\r\n        \"name\": \"CNN\",\r\n        \"webUrl\": \"https://www.cnn.com\"\r\n    },\r\n    \"topics\": [\r\n        {\r\n            \"id\": 1,\r\n            \"type\": \"Politics\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost8080}}/news/1",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"news",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Source",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "add Source",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Example News Source\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost8080}}/source",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"source"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Topic",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "add topic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{localhost8080}}/topic",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"topic"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost8080}}/user",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Bakbergen\",\r\n    \"surname\": \"Atymtay\",\r\n    \"email\": \"atymtaevbak@bk.ru\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost8080}}/user/register",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"atymtaevbak@bk.ru\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost8080}}/user/login",
+							"host": [
+								"{{localhost8080}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

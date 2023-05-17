@@ -2,6 +2,8 @@ package com.strongteam.newsapp.controller;
 
 import com.strongteam.newsapp.constants.SecurityConstant;
 import com.strongteam.newsapp.entity.Users;
+import com.strongteam.newsapp.exception.domain.EmailExistException;
+import com.strongteam.newsapp.exception.domain.UserNotFoundException;
 import com.strongteam.newsapp.payload.LoginDTO;
 import com.strongteam.newsapp.payload.RegisterDTO;
 import com.strongteam.newsapp.payload.UserPrincipal;
@@ -35,7 +37,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterDTO registerDTO) {
+    public ResponseEntity<?> register(@RequestBody RegisterDTO registerDTO) throws EmailExistException {
 
         Users new_user = userService.register(
                 registerDTO.getFirstname(),
@@ -49,7 +51,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO){
+    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) throws UserNotFoundException {
         Users userByEmail = userService.findByUserEmail(loginDTO.getEmail());
 
         authenticate(loginDTO.getEmail(), loginDTO.getPassword());
