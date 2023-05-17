@@ -6,17 +6,22 @@ This project is a News App that allows users to browse and read news from variou
 The News App is built using `Java` and the `Spring Framework`. It uses a `PostgreSQL/H2 memory`(for your chose) database to store the news topics and related information. `Spring Security 5` to implement security issues, `JWT` to authentcate via token.
 
 
+
 ## Running
 To build and run the project, follow these steps:
 
-* Clone the repository: `https://github.com/Bakbergenchick/strong.team-newsapp.git`
+* Clone the repository: `git clone https://github.com/Bakbergenchick/strong.team-newsapp.git`
 * Navigate to the project directory: cd newsapp
 * Add database "newsdb" to postgres or at using h2 memory doens't necessary to do
 * If you want to run at command line:
-  * Build the project: mvn clean install
-  * Run the project: mvn spring-boot:run
+  * Build the project: `mvn clean install`
+  * Run the project: `mvn spring-boot:run`
 * Otherwise you can do it manually using IDE run button
+* Export json box file on Postman if its necessary: <img width="238" alt="image" src="https://github.com/Bakbergenchick/strong.team-newsapp/assets/79043496/f67b4773-4a2d-47b3-9fe0-04a23198098f">
 
+
+## Project Overview
+Project consist 5 pure classes: `User, Role, Topic, Source, News`. `User's` table has many-to-many relationship with `Role` table. `News's` table have many-to-one relationship with `Source` table and many-to-many with `Topics`. For example, `News` from source ZTB belong to only it, but `News` can be any genres/articles/topics like Business, Science, Sport etc.
 
 ## SignUp
 First we need to sign up to make requests to secured endpoints: `POST localhost:8080/api/user/register`
@@ -100,5 +105,8 @@ This task build by using `@Scheduled` annotation and `Spring's task executor` is
 
 ### Spring multithreading settings:
 <img width="573" alt="image" src="https://github.com/Bakbergenchick/strong.team-newsapp/assets/79043496/2858e597-a594-4701-87e9-7a6d8152b7e8">
+
+#### The report is saved in a file called - news-stats-{date}:
+<img width="277" alt="image" src="https://github.com/Bakbergenchick/strong.team-newsapp/assets/79043496/8a84c64c-f8c8-48d7-ae65-02dfdd667c87">
 
 
